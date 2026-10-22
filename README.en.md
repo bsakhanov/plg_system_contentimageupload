@@ -6,7 +6,7 @@ A Joomla 6 system plugin for the article editor. It adds a panel to the "Images 
 
 ![The plugin panel in the article editor](docs/images/en/04-panel-upload.png)
 
-Version 2.0.0 · Joomla 6.0 or later · PHP 8.3 or later with GD · GNU GPL 2 or later
+Version 2.0.1 · Joomla 6.0 or later · PHP 8.3 or later with GD · GNU GPL 2 or later
 
 Download: [GitHub releases](https://github.com/bsakhanov/plg_system_contentimageupload/releases) · author: Beibit Sakhanov, [webmarka.kz](https://webmarka.kz)
 
@@ -47,10 +47,10 @@ Download: [GitHub releases](https://github.com/bsakhanov/plg_system_contentimage
 
 ## Installation and updates
 
-1. Open "System → Install → Extensions", the "Upload Package File" tab, and drop `plg_system_contentimageupload-2.0.0.zip` there. From the command line the same is done by
+1. Open "System → Install → Extensions", the "Upload Package File" tab, and drop `plg_system_contentimageupload-2.0.1.zip` there. From the command line the same is done by
 
    ```
-   php cli/joomla.php extension:install --path=plg_system_contentimageupload-2.0.0.zip
+   php cli/joomla.php extension:install --path=plg_system_contentimageupload-2.0.1.zip
    ```
 
 2. After the first installation the plugin is disabled. Open "System → Plugins", find "Image upload" and enable it.
@@ -59,7 +59,7 @@ Download: [GitHub releases](https://github.com/bsakhanov/plg_system_contentimage
 
 3. Open the plugin and go through the three settings tabs (see "Settings"). If you need a watermark, enable it and choose the watermark file.
 
-If you prefer working with files, take `plg_system_contentimageupload-2.0.0-site-root.zip` from the release: it unpacks straight into the site root, after which "System → Install → Discover" finds the plugin and registers it.
+If you prefer working with files, take `plg_system_contentimageupload-2.0.1-site-root.zip` from the release: it unpacks straight into the site root, after which "System → Install → Discover" finds the plugin and registers it.
 
 Updates come through Joomla: the plugin is connected to the update server in this repository, and a new version shows up among the available extension updates. A manual update is installed over the previous version the same way; settings are kept. Originals that version 1.6 kept in the administrator cache are moved to the new store automatically the first time the image is touched.
 

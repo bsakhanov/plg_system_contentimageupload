@@ -2,6 +2,16 @@
 
 [Русский](CHANGELOG.md) · [Қазақша](CHANGELOG.kk.md) · **English**
 
+## 2.0.1 — 2026-10-22
+
+### Fixed
+
+- The panel labels "Image Class", "Figure Class" and "Caption" now come from the plugin's own language files. Before, the panel took them from the Joomla language pack, and the Russian Joomla 6.0 pack has no translation for the figure class: the `COM_CONTENT_FIELD_FIGURE_CLASS_LABEL` constant or the English "Figure Class" showed up instead of a label.
+
+### Documentation
+
+- Russian screenshots retaken with the 2.0.1 panel and the Russian Joomla 6.2 pack.
+
 ## 2.0.0 — 2026-10-22
 
 ### Changed
