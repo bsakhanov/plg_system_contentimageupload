@@ -29,3 +29,5 @@ done
 (cd "$ROOT" && zip -qr - .) > "dist/${NAME}-${VERSION}-site-root.zip"
 
 ls -l dist
+echo "sha512 of the install package (for updates/contentimageupload.xml):"
+sha512sum "dist/${NAME}-${VERSION}.zip" | cut -d" " -f1

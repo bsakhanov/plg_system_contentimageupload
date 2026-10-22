@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Сервер обновлений плагина Content Image Upload. Новую версию добавляйте сверху; Joomla берёт самую новую из подходящих. -->
+<!-- Сервер обновлений плагина Content Image Upload. Новую версию добавляйте сверху; Joomla берёт самую новую из подходящих.
+     Для каждой версии: ./build.sh, архив из dist/ — в релиз на GitHub, его sha512 (печатает build.sh) — сюда. -->
 <updates>
     <update>
         <name>Content Image Upload</name>
@@ -11,8 +12,9 @@
         <version>2.0.0</version>
         <infourl title="Content Image Upload 2.0.0">https://github.com/bsakhanov/plg_system_contentimageupload/releases/tag/v2.0.0</infourl>
         <downloads>
-            <downloadurl type="full" format="zip">https://github.com/bsakhanov/plg_system_contentimageupload/archive/refs/tags/v2.0.0.zip</downloadurl>
+            <downloadurl type="full" format="zip">https://github.com/bsakhanov/plg_system_contentimageupload/releases/download/v2.0.0/plg_system_contentimageupload-2.0.0.zip</downloadurl>
         </downloads>
+        <sha512>8a164ff5e85a48c8cd8fd4197e8fe98906b169a3860ab287146508118cadbcfd5bce03c2808a5e591f19f208caf95bf245111874a9b0e470d79f40a6f8b65484</sha512>
         <tags><tag>stable</tag></tags>
         <maintainer>Beibit Sakhanov</maintainer>
         <maintainerurl>https://webmarka.kz</maintainerurl>
