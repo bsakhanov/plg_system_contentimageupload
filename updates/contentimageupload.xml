@@ -9,6 +9,25 @@
         <type>plugin</type>
         <folder>system</folder>
         <client>site</client>
+        <version>2.0.1</version>
+        <infourl title="Content Image Upload 2.0.1">https://github.com/bsakhanov/plg_system_contentimageupload/releases/tag/v2.0.1</infourl>
+        <downloads>
+            <downloadurl type="full" format="zip">https://github.com/bsakhanov/plg_system_contentimageupload/releases/download/v2.0.1/plg_system_contentimageupload-2.0.1.zip</downloadurl>
+        </downloads>
+        <sha512>7209db291d8cdf670ee4c40962a26842da8b5899afe248ade8ae9bd0267198aea4b594991a3a09358b0656d3d3473ffd6cac0f6c1f0ae87eb8d7a5df6e6c57be</sha512>
+        <tags><tag>stable</tag></tags>
+        <maintainer>Beibit Sakhanov</maintainer>
+        <maintainerurl>https://webmarka.kz</maintainerurl>
+        <targetplatform name="joomla" version="6\..*"/>
+        <php_minimum>8.3</php_minimum>
+    </update>
+    <update>
+        <name>Content Image Upload</name>
+        <description>Загрузка, обработка и снимаемый водяной знак для изображений материалов Joomla 6</description>
+        <element>contentimageupload</element>
+        <type>plugin</type>
+        <folder>system</folder>
+        <client>site</client>
         <version>2.0.0</version>
         <infourl title="Content Image Upload 2.0.0">https://github.com/bsakhanov/plg_system_contentimageupload/releases/tag/v2.0.0</infourl>
         <downloads>
