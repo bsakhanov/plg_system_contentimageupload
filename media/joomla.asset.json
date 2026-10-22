@@ -1,0 +1,27 @@
+{
+    "$schema": "https://developer.joomla.org/schemas/json-schema/web_assets.json",
+    "name": "plg_system_contentimageupload",
+    "version": "2.0.0",
+    "description": "Assets for the Content Image Upload system plugin.",
+    "license": "GPL-2.0-or-later",
+    "assets": [
+        {
+            "name": "plg_system_contentimageupload.admin",
+            "type": "script",
+            "uri": "plg_system_contentimageupload/admin.js",
+            "version": "2.0.0",
+            "dependencies": [
+                "core"
+            ],
+            "attributes": {
+                "defer": true
+            }
+        },
+        {
+            "name": "plg_system_contentimageupload.admin",
+            "type": "style",
+            "uri": "plg_system_contentimageupload/admin.css",
+            "version": "2.0.0"
+        }
+    ]
+}

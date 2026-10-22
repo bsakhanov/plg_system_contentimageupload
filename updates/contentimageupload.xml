@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Сервер обновлений плагина Content Image Upload. Новую версию добавляйте сверху; Joomla берёт самую новую из подходящих. -->
+<updates>
+    <update>
+        <name>Content Image Upload</name>
+        <description>Загрузка, обработка и снимаемый водяной знак для изображений материалов Joomla 6</description>
+        <element>contentimageupload</element>
+        <type>plugin</type>
+        <folder>system</folder>
+        <client>site</client>
+        <version>2.0.0</version>
+        <infourl title="Content Image Upload 2.0.0">https://github.com/bsakhanov/plg_system_contentimageupload/releases/tag/v2.0.0</infourl>
+        <downloads>
+            <downloadurl type="full" format="zip">https://github.com/bsakhanov/plg_system_contentimageupload/archive/refs/tags/v2.0.0.zip</downloadurl>
+        </downloads>
+        <tags><tag>stable</tag></tags>
+        <maintainer>Beibit Sakhanov</maintainer>
+        <maintainerurl>https://webmarka.kz</maintainerurl>
+        <targetplatform name="joomla" version="6\..*"/>
+        <php_minimum>8.3</php_minimum>
+    </update>
+</updates>

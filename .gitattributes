@@ -1,0 +1,9 @@
+# Kept out of `git archive` and of the GitHub tag archive used by the Joomla update server,
+# so the archive stays a lean install package.
+/docs export-ignore
+/updates export-ignore
+/build.sh export-ignore
+/.gitignore export-ignore
+/.gitattributes export-ignore
+* text=auto eol=lf
+*.png binary

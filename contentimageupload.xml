@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="plugin" group="system" method="upgrade">
+    <name>PLG_SYSTEM_CONTENTIMAGEUPLOAD</name>
+    <author>Beibit Sakhanov</author>
+    <creationDate>2026-10-22</creationDate>
+    <copyright>(C) 2026 Beibit Sakhanov. Based on Content Image Upload 1.6, (C) 2026 Хабар</copyright>
+    <license>GNU General Public License version 2 or later; see LICENSE</license>
+    <authorEmail>info@webmarka.kz</authorEmail>
+    <authorUrl>https://webmarka.kz</authorUrl>
+    <version>2.0.0</version>
+    <description>PLG_SYSTEM_CONTENTIMAGEUPLOAD_XML_DESCRIPTION</description>
+    <scriptfile>script.php</scriptfile>
+    <languages folder="language">
+        <language tag="ru-RU">ru-RU/plg_system_contentimageupload.ini</language>
+        <language tag="ru-RU">ru-RU/plg_system_contentimageupload.sys.ini</language>
+        <language tag="en-GB">en-GB/plg_system_contentimageupload.ini</language>
+        <language tag="en-GB">en-GB/plg_system_contentimageupload.sys.ini</language>
+        <language tag="kk-KZ">kk-KZ/plg_system_contentimageupload.ini</language>
+        <language tag="kk-KZ">kk-KZ/plg_system_contentimageupload.sys.ini</language>
+    </languages>
+    <namespace path="src">Webmarka\Plugin\System\ContentImageUpload</namespace>
+    <files>
+        <folder plugin="contentimageupload">services</folder>
+        <folder>src</folder>
+        <folder>language</folder>
+        <filename>script.php</filename>
+    </files>
+    <media folder="media" destination="plg_system_contentimageupload">
+        <filename>joomla.asset.json</filename>
+        <folder>js</folder>
+        <folder>css</folder>
+    </media>
+    <config>
+        <inlinehelp button="show" />
+        <fields name="params">
+            <fieldset name="basic" label="PLG_SYSTEM_CONTENTIMAGEUPLOAD_FIELDSET_BASIC">
+                <field name="folder_format" type="text" label="PLG_SYSTEM_CONTENTIMAGEUPLOAD_FOLDER_FORMAT" description="PLG_SYSTEM_CONTENTIMAGEUPLOAD_FOLDER_FORMAT_DESC" default="images/{year}/{month}/{day}" filter="string" />
+                <field name="filename_mode" type="list" label="PLG_SYSTEM_CONTENTIMAGEUPLOAD_FILENAME_MODE" description="PLG_SYSTEM_CONTENTIMAGEUPLOAD_FILENAME_MODE_DESC" default="k2hash" validate="options">
+                    <option value="k2hash">PLG_SYSTEM_CONTENTIMAGEUPLOAD_FILENAME_MODE_HASH</option>
+                    <option value="datehash">PLG_SYSTEM_CONTENTIMAGEUPLOAD_FILENAME_MODE_DATEHASH</option>
+                    <option value="original">PLG_SYSTEM_CONTENTIMAGEUPLOAD_FILENAME_MODE_ORIGINAL</option>
+                </field>
+                <field name="filename_suffix" type="text" label="PLG_SYSTEM_CONTENTIMAGEUPLOAD_FILENAME_SUFFIX" description="PLG_SYSTEM_CONTENTIMAGEUPLOAD_FILENAME_SUFFIX_DESC" default="_XL" filter="string" showon="filename_mode:k2hash" />
+                <field name="image_sync" type="list" label="PLG_SYSTEM_CONTENTIMAGEUPLOAD_IMAGE_SYNC" description="PLG_SYSTEM_CONTENTIMAGEUPLOAD_IMAGE_SYNC_DESC" default="on" validate="options">
+                    <option value="on">PLG_SYSTEM_CONTENTIMAGEUPLOAD_IMAGE_SYNC_ON</option>
+                    <option value="off">PLG_SYSTEM_CONTENTIMAGEUPLOAD_IMAGE_SYNC_OFF</option>
+                    <option value="always">PLG_SYSTEM_CONTENTIMAGEUPLOAD_IMAGE_SYNC_ALWAYS</option>
+                </field>
+                <field name="thumb_cache_folders" type="text" label="PLG_SYSTEM_CONTENTIMAGEUPLOAD_THUMB_CACHE" description="PLG_SYSTEM_CONTENTIMAGEUPLOAD_THUMB_CACHE_DESC" default="img" filter="string" />
+            </fieldset>
+            <fieldset name="processing" label="PLG_SYSTEM_CONTENTIMAGEUPLOAD_FIELDSET_PROCESSING">
+                <field name="processing_enabled" type="radio" label="PLG_SYSTEM_CONTENTIMAGEUPLOAD_PROCESSING_ENABLED" description="PLG_SYSTEM_CONTENTIMAGEUPLOAD_PROCESSING_ENABLED_DESC" default="1" filter="integer" layout="joomla.form.field.radio.switcher">
+                    <option value="0">JNO</option><option value="1">JYES</option>
+                </field>
+                <field name="processor_backend" type="list" label="PLG_SYSTEM_CONTENTIMAGEUPLOAD_PROCESSOR_BACKEND" description="PLG_SYSTEM_CONTENTIMAGEUPLOAD_PROCESSOR_BACKEND_DESC" default="joomla-core" validate="options">
+                    <option value="joomla-core">PLG_SYSTEM_CONTENTIMAGEUPLOAD_PROCESSOR_BACKEND_JOOMLA_CORE</option>
+                </field>
+                <field name="resize_mode" type="list" label="PLG_SYSTEM_CONTENTIMAGEUPLOAD_RESIZE_MODE" description="PLG_SYSTEM_CONTENTIMAGEUPLOAD_RESIZE_MODE_DESC" default="none" validate="options">
+                    <option value="none">PLG_SYSTEM_CONTENTIMAGEUPLOAD_RESIZE_MODE_NONE</option>
+                    <option value="fit">PLG_SYSTEM_CONTENTIMAGEUPLOAD_RESIZE_MODE_FIT</option>
+                    <option value="crop">PLG_SYSTEM_CONTENTIMAGEUPLOAD_RESIZE_MODE_CROP</option>
+                    <option value="width">PLG_SYSTEM_CONTENTIMAGEUPLOAD_RESIZE_MODE_WIDTH</option>
+                    <option value="height">PLG_SYSTEM_CONTENTIMAGEUPLOAD_RESIZE_MODE_HEIGHT</option>
+                </field>
+                <field name="max_width" type="number" label="PLG_SYSTEM_CONTENTIMAGEUPLOAD_MAX_WIDTH" description="PLG_SYSTEM_CONTENTIMAGEUPLOAD_MAX_WIDTH_DESC" default="1920" min="0" step="1" addonAfter="px" filter="integer" showon="resize_mode!:none" />
+                <field name="max_height" type="number" label="PLG_SYSTEM_CONTENTIMAGEUPLOAD_MAX_HEIGHT" description="PLG_SYSTEM_CONTENTIMAGEUPLOAD_MAX_HEIGHT_DESC" default="1080" min="0" step="1" addonAfter="px" filter="integer" showon="resize_mode!:none" />
+                <field name="image_fill_color" type="color" label="PLG_SYSTEM_CONTENTIMAGEUPLOAD_IMAGE_FILL_COLOR" description="PLG_SYSTEM_CONTENTIMAGEUPLOAD_IMAGE_FILL_COLOR_DESC" default="#ffffff" filter="color" showon="resize_mode:fit" />
+                <field name="allow_upscale" type="radio" label="PLG_SYSTEM_CONTENTIMAGEUPLOAD_ALLOW_UPSCALE" description="PLG_SYSTEM_CONTENTIMAGEUPLOAD_ALLOW_UPSCALE_DESC" default="0" filter="integer" layout="joomla.form.field.radio.switcher">
+                    <option value="0">JNO</option><option value="1">JYES</option>
+                </field>
+                <field name="output_format" type="list" label="PLG_SYSTEM_CONTENTIMAGEUPLOAD_OUTPUT_FORMAT" description="PLG_SYSTEM_CONTENTIMAGEUPLOAD_OUTPUT_FORMAT_DESC" default="keep" validate="options">
+                    <option value="keep">PLG_SYSTEM_CONTENTIMAGEUPLOAD_OUTPUT_FORMAT_KEEP</option>
+                    <option value="jpg">JPG / JPEG</option><option value="png">PNG</option><option value="gif">GIF</option><option value="webp">WEBP</option><option value="avif">AVIF</option><option value="bmp">BMP</option>
+                </field>
+                <field name="quality" type="number" label="PLG_SYSTEM_CONTENTIMAGEUPLOAD_QUALITY" description="PLG_SYSTEM_CONTENTIMAGEUPLOAD_QUALITY_DESC" default="82" min="1" max="100" step="1" filter="integer" />
+                <field name="png_compression" type="number" label="PLG_SYSTEM_CONTENTIMAGEUPLOAD_PNG_COMPRESSION" description="PLG_SYSTEM_CONTENTIMAGEUPLOAD_PNG_COMPRESSION_DESC" default="6" min="0" max="9" step="1" filter="integer" showon="output_format:png,keep" />
+                <field name="strict_mode" type="radio" label="PLG_SYSTEM_CONTENTIMAGEUPLOAD_STRICT_MODE" description="PLG_SYSTEM_CONTENTIMAGEUPLOAD_STRICT_MODE_DESC" default="0" filter="integer" layout="joomla.form.field.radio.switcher">
+                    <option value="0">JNO</option><option value="1">JYES</option>
+                </field>
+            </fieldset>
+            <fieldset name="watermark" label="PLG_SYSTEM_CONTENTIMAGEUPLOAD_FIELDSET_WATERMARK">
+                <field name="watermark_enabled" type="radio" label="PLG_SYSTEM_CONTENTIMAGEUPLOAD_WATERMARK_ENABLED" description="PLG_SYSTEM_CONTENTIMAGEUPLOAD_WATERMARK_ENABLED_DESC" default="0" filter="integer" layout="joomla.form.field.radio.switcher">
+                    <option value="0">JNO</option><option value="1">JYES</option>
+                </field>
+                <field name="watermark_file" type="media" label="PLG_SYSTEM_CONTENTIMAGEUPLOAD_WATERMARK_FILE" description="PLG_SYSTEM_CONTENTIMAGEUPLOAD_WATERMARK_FILE_DESC" default="" types="images" filter="string" />
+                <field name="watermark_position" type="list" label="PLG_SYSTEM_CONTENTIMAGEUPLOAD_WATERMARK_POSITION" description="PLG_SYSTEM_CONTENTIMAGEUPLOAD_WATERMARK_POSITION_DESC" default="bottom_right" validate="options">
+                    <option value="top_left">PLG_SYSTEM_CONTENTIMAGEUPLOAD_WATERMARK_TOP_LEFT</option>
+                    <option value="top_right">PLG_SYSTEM_CONTENTIMAGEUPLOAD_WATERMARK_TOP_RIGHT</option>
+                    <option value="center">PLG_SYSTEM_CONTENTIMAGEUPLOAD_WATERMARK_CENTER</option>
+                    <option value="bottom_left">PLG_SYSTEM_CONTENTIMAGEUPLOAD_WATERMARK_BOTTOM_LEFT</option>
+                    <option value="bottom_right">PLG_SYSTEM_CONTENTIMAGEUPLOAD_WATERMARK_BOTTOM_RIGHT</option>
+                </field>
+                <field name="watermark_opacity" type="number" label="PLG_SYSTEM_CONTENTIMAGEUPLOAD_WATERMARK_OPACITY" description="PLG_SYSTEM_CONTENTIMAGEUPLOAD_WATERMARK_OPACITY_DESC" default="80" min="1" max="100" step="1" addonAfter="%" filter="integer" />
+                <field name="watermark_scale" type="number" label="PLG_SYSTEM_CONTENTIMAGEUPLOAD_WATERMARK_SCALE" description="PLG_SYSTEM_CONTENTIMAGEUPLOAD_WATERMARK_SCALE_DESC" default="20" min="1" max="100" step="1" addonAfter="%" filter="integer" />
+                <field name="watermark_margin_x" type="number" label="PLG_SYSTEM_CONTENTIMAGEUPLOAD_WATERMARK_MARGIN_X" description="PLG_SYSTEM_CONTENTIMAGEUPLOAD_WATERMARK_MARGIN_X_DESC" default="24" min="0" max="500" step="1" addonAfter="px" filter="integer" />
+                <field name="watermark_margin_y" type="number" label="PLG_SYSTEM_CONTENTIMAGEUPLOAD_WATERMARK_MARGIN_Y" description="PLG_SYSTEM_CONTENTIMAGEUPLOAD_WATERMARK_MARGIN_Y_DESC" default="24" min="0" max="500" step="1" addonAfter="px" filter="integer" />
+            </fieldset>
+        </fields>
+    </config>
+    <updateservers>
+        <server type="extension" priority="1" name="Content Image Upload">https://raw.githubusercontent.com/bsakhanov/plg_system_contentimageupload/main/updates/contentimageupload.xml</server>
+    </updateservers>
+</extension>
